@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 240 20% 4%;
+    --foreground: 210 20% 92%;
+
+    --card: 240 20% 8%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 240 20% 8%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 157 100% 50%;
+    --primary-foreground: 240 20% 4%;
+
+    --secondary: 191 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 20% 12%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 191 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 20% 15%;
+    --input: 240 20% 15%;
+    --ring: 157 100% 50%;
+
+    --radius: 0.75rem;
+
+    --gradient-start: 157 100% 50%;
+    --gradient-end: 191 100% 50%;
+
+    --glass-bg: 240 20% 6%;
+    --glass-border: 240 20% 18%;
+
+    --sidebar-background: 228 15% 7%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 225 73% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 15% 15%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 228 15% 18%;
+    --sidebar-ring: 225 73% 57%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  @media (pointer: fine) {
+
+    body,
+    * {
+      cursor: none !important;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/50 backdrop-blur-xl border border-glass-border rounded-xl;
+  }
+
+  .glass-strong {
+    @apply bg-card/70 backdrop-blur-2xl border border-glass-border rounded-xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply relative;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end))) border-box;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-8;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
